@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OCR 單字擷取 - 單字列表</title>
+  <link rel="stylesheet" href="wordlist.css">
+</head>
+<body>
+  <div class="page-container">
+    <header class="page-header">
+      <h1>單字列表</h1>
+      <div class="header-actions">
+        <input type="text" id="search" placeholder="搜尋單字..." class="search-input">
+        <span id="word-count" class="word-count"></span>
+      </div>
+    </header>
+    <div id="word-grid" class="word-grid">
+      <!-- Cards rendered by JS -->
+    </div>
+    <div id="empty-state" class="empty-state" style="display:none;">
+      <p>還沒有擷取任何單字</p>
+      <p class="hint">使用 Alt+Shift+O 或右鍵選單來開始擷取</p>
+    </div>
+  </div>
+  <script src="wordlist.js"></script>
+</body>
+</html>

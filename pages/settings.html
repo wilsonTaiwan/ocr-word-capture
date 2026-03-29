@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OCR 單字擷取 - 設定</title>
+  <link rel="stylesheet" href="settings.css">
+</head>
+<body>
+  <div class="settings-container">
+    <h1>設定</h1>
+    <div class="setting-group">
+      <label for="api-key">Google Gemini API Key</label>
+      <p class="setting-desc">前往 <a href="https://aistudio.google.com/apikey" target="_blank">Google AI Studio</a> 取得 API Key</p>
+      <div class="input-row">
+        <input type="password" id="api-key" placeholder="輸入你的 Gemini API Key" autocomplete="off">
+        <button id="btn-toggle" class="btn-icon-only" title="顯示/隱藏">👁️</button>
+      </div>
+      <div class="button-row">
+        <button id="btn-save" class="btn-primary">儲存</button>
+        <button id="btn-test" class="btn-secondary">測試連線</button>
+      </div>
+      <div id="status-msg" class="status-msg"></div>
+    </div>
+  </div>
+  <script src="settings.js"></script>
+</body>
+</html>

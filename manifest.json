@@ -1,0 +1,52 @@
+{
+  "manifest_version": 3,
+  "name": "OCR Word Capture",
+  "version": "1.0.0",
+  "description": "Capture English words from screen via OCR and get AI-powered Chinese translations",
+  "permissions": [
+    "activeTab",
+    "storage",
+    "contextMenus",
+    "scripting"
+  ],
+  "background": {
+    "service_worker": "service-worker.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["lib/tesseract.min.js", "content/content.js"],
+      "css": ["content/content.css"]
+    }
+  ],
+  "action": {
+    "default_popup": "popup/popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "commands": {
+    "activate-ocr": {
+      "suggested_key": {
+        "default": "Alt+Shift+O"
+      },
+      "description": "Activate OCR screen capture mode"
+    }
+  },
+  "web_accessible_resources": [
+    {
+      "resources": ["lib/*", "traineddata/*"],
+      "matches": ["<all_urls>"]
+    }
+  ],
+  "content_security_policy": {
+    "extension_pages": "script-src 'self' 'wasm-unsafe-eval'; object-src 'self'"
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+}

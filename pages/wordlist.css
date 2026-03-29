@@ -1,0 +1,170 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background: #0f0f23;
+  color: #e0e0e0;
+  min-height: 100vh;
+}
+
+.page-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 24px;
+}
+
+.page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 32px;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.page-header h1 {
+  font-size: 24px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.search-input {
+  padding: 8px 14px;
+  border: 1px solid #2a2a4a;
+  border-radius: 8px;
+  background: #1a1a2e;
+  color: #e0e0e0;
+  font-size: 14px;
+  width: 220px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.search-input:focus {
+  border-color: #4A90D9;
+}
+
+.word-count {
+  font-size: 13px;
+  color: #888;
+}
+
+/* Card Grid */
+.word-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 16px;
+}
+
+.word-card {
+  background: #1a1a2e;
+  border: 1px solid #2a2a4a;
+  border-radius: 12px;
+  padding: 18px 20px;
+  transition: opacity 0.2s, transform 0.2s, border-color 0.2s;
+}
+
+.word-card:hover {
+  border-color: #3a3a5a;
+}
+
+.word-card.pinned {
+  border-color: #4A90D9;
+  background: #16213e;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 4px;
+}
+
+.card-word {
+  font-size: 20px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.card-actions {
+  display: flex;
+  gap: 4px;
+}
+
+.card-actions button {
+  background: none;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 2px 6px;
+  border-radius: 4px;
+  transition: background 0.2s;
+}
+
+.card-actions button:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.card-pos {
+  font-size: 12px;
+  color: #4A90D9;
+  margin-bottom: 8px;
+}
+
+.card-translation {
+  font-size: 16px;
+  color: #4ade80;
+  margin-bottom: 12px;
+}
+
+.card-example {
+  font-size: 13px;
+  color: #ccc;
+  font-style: italic;
+  margin-bottom: 4px;
+  line-height: 1.5;
+}
+
+.card-example-tr {
+  font-size: 12px;
+  color: #888;
+  margin-bottom: 8px;
+  line-height: 1.5;
+}
+
+.card-date {
+  font-size: 11px;
+  color: #555;
+  text-align: right;
+}
+
+/* Empty State */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 300px;
+  color: #666;
+  text-align: center;
+}
+
+.empty-state p {
+  font-size: 16px;
+  margin-bottom: 8px;
+}
+
+.empty-state .hint {
+  font-size: 13px;
+  color: #555;
+}
