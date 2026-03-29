@@ -1,17 +1,37 @@
 const wordGrid = document.getElementById("word-grid");
 const emptyState = document.getElementById("empty-state");
 const searchInput = document.getElementById("search");
+const sortSelect = document.getElementById("sort-mode");
 const wordCountEl = document.getElementById("word-count");
 
 let allWords = [];
 
+function sortWords(words, mode) {
+  const pinned = words.filter((w) => w.pinned);
+  const unpinned = words.filter((w) => !w.pinned);
+
+  switch (mode) {
+    case "alpha":
+      unpinned.sort((a, b) => a.word.localeCompare(b.word));
+      break;
+    case "random":
+      for (let i = unpinned.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [unpinned[i], unpinned[j]] = [unpinned[j], unpinned[i]];
+      }
+      break;
+    case "date":
+    default:
+      unpinned.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+      break;
+  }
+
+  return [...pinned, ...unpinned];
+}
+
 async function loadWords() {
   const { words = [] } = await chrome.storage.local.get("words");
-  // Sort: pinned first, then newest first
-  allWords = words.sort((a, b) => {
-    if (a.pinned !== b.pinned) return b.pinned ? 1 : -1;
-    return new Date(b.createdAt) - new Date(a.createdAt);
-  });
+  allWords = sortWords(words, sortSelect.value);
   renderWords(allWords);
 }
 
@@ -80,6 +100,20 @@ function renderWords(words) {
     });
   });
 }
+
+// Sort mode change
+sortSelect.addEventListener("change", () => {
+  allWords = sortWords(allWords, sortSelect.value);
+  const query = searchInput.value.toLowerCase().trim();
+  if (query) {
+    const filtered = allWords.filter(
+      (w) => w.word.toLowerCase().includes(query) || w.translation.includes(query)
+    );
+    renderWords(filtered);
+  } else {
+    renderWords(allWords);
+  }
+});
 
 // Search/filter
 searchInput.addEventListener("input", (e) => {

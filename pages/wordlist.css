@@ -54,6 +54,22 @@ body {
   border-color: #4A90D9;
 }
 
+.sort-select {
+  padding: 8px 12px;
+  border: 1px solid #2a2a4a;
+  border-radius: 8px;
+  background: #1a1a2e;
+  color: #e0e0e0;
+  font-size: 14px;
+  outline: none;
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+
+.sort-select:focus {
+  border-color: #4A90D9;
+}
+
 .word-count {
   font-size: 13px;
   color: #888;
